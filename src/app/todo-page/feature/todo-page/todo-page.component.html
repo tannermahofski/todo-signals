@@ -1,0 +1,27 @@
+<main class="content">
+  <div class="left-section">
+    <h2 class="section-title">Here Is Your Todo List For Today:</h2>
+    @for (task of tasks(); track task.id) {
+    <app-todo-list-item
+      class="todo-list-item"
+      (click)="clickTask(task)"
+      [task]="task"
+      [onDelete]="onDelete"
+    />
+    }
+  </div>
+  <div class="right-section">
+    <h2 class="section-title">Add A New Todo Item:</h2>
+    <div class="right-input-section">
+      <input
+        type="text"
+        class="todo-input"
+        placeholder="Add a new item"
+        [value]="taskInput()"
+        (input)="onInput($event)"
+        (keydown.enter)="addTask()"
+      />
+      <button class="add-task-button" (click)="addTask()">Add</button>
+    </div>
+  </div>
+</main>
